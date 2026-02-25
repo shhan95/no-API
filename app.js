@@ -186,3 +186,41 @@ async function initBannerSection() {
 document.addEventListener("DOMContentLoaded", () => {
   initBannerSection();
 });
+
+async function loadJSON(path, fallback){
+  try{
+    const r = await fetch(path, { cache: "no-store" });
+    if(!r.ok) throw new Error(path + " " + r.status);
+    return await r.json();
+  }catch(e){
+    console.warn("load fail:", path, e);
+    return fallback;
+  }
+}
+
+function renderBanners(items){
+  const grid = document.getElementById("bannerGrid");
+  if(!grid) return;
+  grid.innerHTML = "";
+
+  for(const x of items){
+    const a = document.createElement("a");
+    a.className = "banner";
+    a.href = x.url;              // ✅ 법제처 상세 URL (admRulSeq)
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.innerHTML = `<span class="badge">${x.code}</span><span>${x.title}</span>`;
+    grid.appendChild(a);
+  }
+  if(items.length === 0){
+    grid.innerHTML = `<div class="hint">배너 데이터가 없습니다. Actions에서 update_standards.py가 먼저 실행돼야 합니다.</div>`;
+  }
+}
+
+async function initBanners(){
+  const nfpc = await loadJSON("data/standards_nfpc.json", {items:[]});
+  const nftc = await loadJSON("data/standards_nftc.json", {items:[]});
+  renderBanners([...(nfpc.items||[]), ...(nftc.items||[])]);
+}
+
+document.addEventListener("DOMContentLoaded", initBanners);

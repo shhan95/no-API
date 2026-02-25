@@ -24,3 +24,60 @@ h1{margin:0 0 6px 0;font-size:24px}
   .card{background:white;border:1px solid #ddd}
   .banner,.log{background:white}
 }
+.banner-toolbar{
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  padding:12px 0;
+}
+.banner-toolbar .input{ flex:1; }
+
+.seg{ display:flex; gap:6px; }
+.segbtn{
+  padding:8px 10px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);
+  color:inherit; cursor:pointer;
+}
+.segbtn.active{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.22);
+}
+
+.banner-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap:12px;
+}
+.banner-card{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.banner-top{
+  display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+}
+.badge{
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.08);
+  white-space:nowrap;
+}
+.banner-code{ font-weight:700; font-size:16px; }
+.banner-title{ opacity:.9; font-size:13px; line-height:1.3; min-height:34px; }
+.banner-actions{ display:flex; gap:8px; margin-top:6px; }
+.banner-actions a{
+  flex:1;
+  text-align:center;
+  padding:9px 10px;
+  border-radius:12px;
+  text-decoration:none;
+  color:inherit;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.07);
+}
+.banner-actions a:hover{ background:rgba(255,255,255,.12); }

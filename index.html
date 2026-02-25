@@ -7,6 +7,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<section class="panel">
+  <div class="panel-header">
+    <h2>NFPC / NFTC 배너</h2>
+    <div class="sub">항상 표시 (로그와 무관)</div>
+  </div>
+
+  <div class="banner-toolbar">
+    <input id="bannerQ" class="input" type="search" placeholder="검색: NFPC 103, 공동주택, 스프링클러..." />
+    <div class="seg">
+      <button id="btnAll" class="segbtn active">전체</button>
+      <button id="btnNFPC" class="segbtn">NFPC</button>
+      <button id="btnNFTC" class="segbtn">NFTC</button>
+    </div>
+  </div>
+
+  <div id="bannerGrid" class="banner-grid"></div>
+</section>
   <header class="wrap">
     <h1>NFPC / NFTC 주간 자동검토 대시보드</h1>
     <div class="sub">법제처(국가법령정보센터)·소방청 공개 웹페이지 기반 / 매주 금요일 14:00(KST) 자동 점검</div>

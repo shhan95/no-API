@@ -24,6 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4 lxml
 
+      - name: Build standards (NFPC/NFTC banners)
+        run: |
+          python scripts/update_standards.py
+
       - name: Run checker (no api)
         run: |
           python scripts/check_updates_noapi.py
@@ -32,6 +36,6 @@ jobs:
         run: |
           git config user.name "nfpc-nftc-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data.json snapshot.json reports/*.html || true
-          git commit -m "Weekly NFPC/NFTC check" || echo "No changes"
+          git add data/standards_nfpc.json data/standards_nftc.json data.json snapshot.json reports/*.html || true
+          git commit -m "Update NFPC/NFTC (standards + log)" || echo "No changes"
           git push
